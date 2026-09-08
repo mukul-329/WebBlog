@@ -23,7 +23,7 @@ services:
      condition: service_healthy
 
  database:
-  image: mongo:alpine
+  image: mongo
   container_name: blog-db
   volumes:
    - ./blog-db/db:/data/db
