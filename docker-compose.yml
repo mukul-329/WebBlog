@@ -19,10 +19,11 @@ services:
   networks:
    - blog-network
   depends_on:
-   - database
+    database:
+     condition: service_healthy
 
  database:
-  image: mongo:7.0
+  image: mongo:alpine
   container_name: blog-db
   volumes:
    - ./blog-db/db:/data/db
@@ -31,7 +32,12 @@ services:
    - blog-network
   env_file:
    - ./.env 
-
+  healthcheck:
+    test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')", "--quiet"]
+    interval: 10s
+    timeout: 5s
+    retries: 3
+    start_period: 10s
 
 networks:
  blog-network:
