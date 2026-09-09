@@ -19,5 +19,5 @@ jobs:
             - name: Install Module 
               run: yarn --cwd $GITHUB_WORKSPACE/frontend
               
-            - name: Run ESLint
-              run: yarn lint --cwd $GITHUB_WORKSPACE/frontend
+            - name: Run Linter
+              run: cd frontend && yarn lint 
