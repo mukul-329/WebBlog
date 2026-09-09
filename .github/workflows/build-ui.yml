@@ -15,6 +15,9 @@ jobs:
               uses: docker/setup-docker-action@v5
              
             - name: Docker Login
+              env:
+                DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+                DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}  
               run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
               
 
