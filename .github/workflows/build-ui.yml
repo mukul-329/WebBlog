@@ -16,11 +16,5 @@ jobs:
              
             - name: Docker Login
               run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
-            
-            - name: Docker build
-            #   run: cd frontend && docker build -t blog-frontend:latest .
-
-
-            - name: Docker Push
               
 
