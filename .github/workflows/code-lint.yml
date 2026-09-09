@@ -1,0 +1,17 @@
+name: Code Linting & Test
+on:
+    push:
+        branches: main
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: Install Module 
+              run: yarn
+              
+            - name: Run ESLint
+              run: eslint . --ext .js,.jsx,.ts,.tsx  
