@@ -1,9 +1,9 @@
-# Goal: To build frontend and push my docker image to docker hub.
-name: Build & push Frontend
+# Goal: To build backend and push my docker image to docker hub.
+name: Build & push Backend
 on: 
     workflow_dispatch: 
     push:
-        paths: .github/workflows/build-ui.yml
+        paths: .github/workflows/build-backend.yml
 
 jobs:
     build:
@@ -22,10 +22,10 @@ jobs:
               run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
             
             - name: Docker Build
-              run: cd frontend && docker build -t mukul329/blog-frontend:latest .
+              run: cd backend && docker build -t mukul329/blog-backend:latest .
 
             - name: Show image
               run: docker images  
 
             - name: Docker push
-              run: docker push mukul329/blog-frontend:latest  
+              run: docker push mukul329/blog-backend:latest  
