@@ -1,0 +1,32 @@
+# Goal: To Build both images in one job using matrix Strategy
+name: Build & Push
+on: 
+    push: 
+
+jobs:
+    build:
+        runs-on: ubuntu-latest        
+        strategy:
+            matrix:
+                component: [frontend,backend]
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+            
+            - name: Docker Set-up
+              uses: docker/setup-docker-action@v5
+             
+            - name: Docker Login
+              env:
+                DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+                DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}  
+              run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
+            
+            - name: Docker Build
+              run: cd ${{ matrix.component }} && docker build -t mukul329/blog-${{ matrix.component }}:latest .
+
+            - name: Show image
+              run: docker images  
+
+            - name: Docker push
+              run: docker push mukul329/blog-${{ matrix.component }}:latest          
