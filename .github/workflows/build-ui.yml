@@ -2,7 +2,7 @@ name: Build & push Frontend
 on: 
     workflow_dispatch: 
     push:
-        paths: frontend/
+        paths: .github/workflows/build-ui.yml
 
 jobs:
     build:
@@ -19,5 +19,9 @@ jobs:
                 DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
                 DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}  
               run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
-              
+            
+            - name: Docker Build
+              run: cd frontend && docker build -t blog-frontend:latest .
 
+            - name: Show image
+              run: docker images  
