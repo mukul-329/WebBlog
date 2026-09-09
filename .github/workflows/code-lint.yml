@@ -9,9 +9,12 @@ jobs:
         steps:
             - name: Code Checkout
               uses: actions/checkout@v7
+            
+            - name: Change directory
+              run: cd frontend  
 
             - name: Install Module 
               run: yarn
               
             - name: Run ESLint
-              run: eslint . --ext .js,.jsx,.ts,.tsx  
+              run: eslint ../. --ext .js,.jsx,.ts,.tsx  
