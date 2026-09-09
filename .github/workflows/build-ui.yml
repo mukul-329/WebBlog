@@ -1,0 +1,26 @@
+name: Build & push
+on: 
+    workflow_dispatch: 
+    push:
+        paths: frontend/
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+            
+            - name: Docker Set-up
+              uses: docker/setup-docker-action@v5
+             
+            - name: Docker Login
+              run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
+            
+            - name: Docker build
+            #   run: cd frontend && docker build -t blog-frontend:latest .
+
+
+            - name: Docker Push
+              
+
