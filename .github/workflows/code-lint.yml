@@ -20,4 +20,4 @@ jobs:
               run: yarn --cwd $GITHUB_WORKSPACE/frontend
               
             - name: Run ESLint
-              run: yarn eslint $GITHUB_WORKSPACE/frontend --ext .js,.jsx,.ts,.tsx  
+              run: yarn lint
