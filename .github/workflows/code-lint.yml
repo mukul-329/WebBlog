@@ -17,7 +17,7 @@ jobs:
               run: cd $GITHUB_WORKSPACE/frontend
 
             - name: Install Module 
-              run: yarn
+              run: yarn --cwd $GITHUB_WORKSPACE/frontend
               
             - name: Run ESLint
               run: eslint ../. --ext .js,.jsx,.ts,.tsx  
