@@ -9,9 +9,12 @@ jobs:
         steps:
             - name: Code Checkout
               uses: actions/checkout@v7
+
+            - name: Show directory
+              run:  ls -al $GITHUB_WORKSPACE 
             
             - name: Change directory
-              run: cd $GITHUB_WORKSPACE/frontend/  
+              run: cd $GITHUB_WORKSPACE/frontend
 
             - name: Install Module 
               run: yarn
