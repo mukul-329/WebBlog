@@ -1,9 +1,7 @@
 # Goal: To build frontend and push my docker image to docker hub.
 name: Build & push Frontend
 on: 
-    workflow_dispatch: 
-    push:
-        paths: .github/workflows/build-ui.yml
+    workflow_call:
 
 jobs:
     build:

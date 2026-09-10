@@ -1,0 +1,20 @@
+name: Continuous Integration
+on:
+    push:
+        branches: main
+    pull_request: 
+        
+jobs:
+    Code-Scanning:
+        uses: ./.github/workflows/code-scan.yml
+        secrets: inherit    
+        
+    Image-Scanning:
+        uses: ./.github/workflows/build.yml    
+        secrets: inherit
+        needs: Code-Scanning
+        
+    Push-to-Registry:
+        uses: ./.github/workflows/push.yml  
+        secrets: inherit  
+        needs: Image-Scanning

@@ -1,0 +1,14 @@
+name: Dependency Checker
+on:
+    workflow_call: 
+
+jobs:
+    Dependency_Scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: 'Dependency Review'
+              uses: actions/dependency-review-action@v5 
+

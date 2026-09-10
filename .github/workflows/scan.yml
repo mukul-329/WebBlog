@@ -1,9 +1,6 @@
 name: Repository Scanning
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_call:
 jobs:
   scan:
     runs-on: ubuntu-24.04

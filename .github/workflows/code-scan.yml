@@ -1,0 +1,23 @@
+name: Code Scanning
+on:
+  workflow_call: 
+
+jobs:
+    lint:
+        uses: ./.github/workflows/code-lint.yml
+              
+    secret-scanning:
+        uses: ./.github/workflows/secret-scanning.yml
+        secrets: inherit
+    
+    Dependency-Scan:
+        uses: ./.github/workflows/deps.yml
+    
+    Security-Scan:
+        runs-on: ubuntu-latest
+        
+    
+    Unit-Test:
+        runs-on: ubuntu-latest
+        
+    

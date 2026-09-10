@@ -1,6 +1,6 @@
 name: Code Linting & Test
 on:
-    workflow_dispatch: 
+    workflow_call: 
 
 jobs:
     lint:
