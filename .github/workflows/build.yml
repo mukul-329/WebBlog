@@ -1,7 +1,7 @@
 # Goal: To Build both images in one job using matrix Strategy
 name: Build & Push
 on: 
-    push: 
+    workflow_dispatch: 
 
 jobs:
     build:
