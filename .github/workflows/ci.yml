@@ -5,17 +5,16 @@ on:
     pull_request: 
         
 jobs:
-    Code-Scanning:
+    code-scanning:
         uses: ./.github/workflows/code-scan.yml
         secrets: inherit    
         
-    Image-Scanning:
+    image-scanning:
         uses: ./.github/workflows/build.yml    
         secrets: inherit
-        needs: Code-Scanning
+        needs: code-scanning
         
     Push-to-Registry:
         uses: ./.github/workflows/push.yml  
         secrets: inherit  
-        needs: Image-Scanning
-        
+        needs: image-scanning
