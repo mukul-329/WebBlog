@@ -13,6 +13,9 @@ jobs:
     Dependency-Scan:
         uses: ./.github/workflows/deps.yml
     
+    Sonarqube-Scan:
+        uses: ./.github/workflows/sonar.yml  
+        secrets: inherit  
     # Security-Scan:
         
         
