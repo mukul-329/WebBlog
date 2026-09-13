@@ -25,7 +25,7 @@ if (process.env.CLIENT_ORIGIN) {
 
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
-
+const API = "00M1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P7Q8R9S0"; 
 const PORT = process.env.PORT || 5000;
 
 mongoose.set('strictQuery', false); 
