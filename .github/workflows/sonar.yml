@@ -8,11 +8,27 @@ jobs:
          - name: Code Checkout
            uses: actions/checkout@v7
            with:
-              fetch-depth: 0
+              fetch-depth: 0 
+
+         - name: Setup Node
+           uses: actions/setup-node@v6
+           with:
+             node-version: 22
+             cache: npm
+             cache-dependency-path: |
+                backend/package-lock.json
+                frontend/package-lock.json
+
+         - name: Install backend dependencies
+           run: cd backend && npm ci && npm test
 
          - name: SonarQube Scan
            uses: SonarSource/sonarqube-scan-action@v8
            env:
              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+           with:
+             args: >
+                -Dsonar.branch.name=${{ github.ref_name }}
+                  
            
