@@ -23,12 +23,9 @@ jobs:
            run: cd backend && npm ci && npm test
 
          - name: SonarQube Scan
-           uses: SonarSource/sonarqube-scan-action@v8
+           uses: SonarSource/sonarqube-scan-action@v8.2.1
            env:
              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-           with:
-            args: >
-              -Dsonar.projectKey=App-Blog
-              -Dsonar.branch.name=main  
+            
            
