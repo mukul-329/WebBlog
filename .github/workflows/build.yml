@@ -8,7 +8,8 @@ env:
     DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}  
 jobs:
     build:
-        runs-on: ubuntu-latest        
+        runs-on: ubuntu-latest  
+        environment: prod     
         strategy:
             fail-fast: false
             matrix:
