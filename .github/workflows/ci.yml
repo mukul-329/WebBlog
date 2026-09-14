@@ -16,5 +16,5 @@ jobs:
         
     Push-to-Registry:
         uses: ./.github/workflows/push.yml  
-        secrets: inherit  
+        secrets: inherit
         needs: image-scanning

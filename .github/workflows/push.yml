@@ -8,7 +8,8 @@ env:
 
 jobs:
     build:
-        runs-on: ubuntu-latest        
+        runs-on: ubuntu-latest
+        environment: prod        
         strategy:
             matrix:
                 component: [frontend,backend]
