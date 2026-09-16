@@ -22,7 +22,7 @@ jobs:
                 path: sbom.cyclonedx.json  
 
             - name: Scan SBOM
-              uses: anchore/scan-action@v4
+              uses: anchore/scan-action@v7
               with:
                 sbom: 'sbom.cyclonedx.json'
                 fail-build: true
