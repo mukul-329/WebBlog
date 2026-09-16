@@ -1,0 +1,29 @@
+name: SBOM Analysis
+on:
+    workflow_dispatch: 
+jobs:
+    sbom-scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Generate SBOM (Syft)
+              uses: anchore/sbom-action@v0
+              with:
+                path: .
+                format: 'cyclonedx-json'
+                output-file: 'sbom.cyclonedx.json'
+                
+            - name: Archive SBOM Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: software-bill-of-materials
+                path: sbom.cyclonedx.json  
+
+            - name: Scan SBOM
+              uses: anchore/scan-action@v4
+              with:
+                sbom: 'sbom.cyclonedx.json'
+                fail-build: true
+                severity-cutoff: 'high'    
