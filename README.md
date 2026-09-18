@@ -1,7 +1,7 @@
 # 📝 A Blogging Platform
 Original Repo: [Blogify-MERN](https://github.com/SaiSriramKamineni/Blogify-MERN)
 
-Welcome to Blogify - a simple yet powerful blogging platform where users can create, edit, comment on, search, like, and delete blog posts.
+Welcome to Blogify- a simple yet powerful blogging platform where users can create, edit, comment on, search, like, and delete blog posts.
 
 Users can read and search for blogs without signing in, but if users want to create, edit, like, comment on, or delete posts, you'll need to sign in.
 
