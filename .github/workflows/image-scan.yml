@@ -30,18 +30,18 @@ jobs:
             - name: Dockerfile Lint
               uses: hadolint/hadolint-action@v3.1.0
               with:
-               dockerfile: ${{ matrix.component }}/Dockerfile    
+               dockerfile: "${{ matrix.component }}/Dockerfile"    
              
             - name: Docker Login
               run: docker login -u "$DOCKER_USERNAME" -p "$DOCKER_SECRET"
             
             - name: Docker Build
-              run: cd "${{ matrix.component }}" && docker build --no-cache -t "$DOCKER_USERNAME"/blog-"${{ matrix.component }}":latest .
+              run: cd "${{ matrix.component }}" && docker build --no-cache -t "$DOCKER_USERNAME/blog-${{ matrix.component }}:latest" .
 
             - name: Show image
               run: docker images  
 
             - name: Scan Images
-              run: trivy image --severity HIGH,CRITICAL --exit-code 1 $DOCKER_USERNAME/blog-"${{ matrix.component }}":latest
+              run: trivy image --severity HIGH,CRITICAL --exit-code 1 "$DOCKER_USERNAME/blog-${{ matrix.component }}:latest"
 
                      
