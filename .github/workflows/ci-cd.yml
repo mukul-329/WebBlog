@@ -33,6 +33,8 @@ jobs:
     
     # SBOM Analysis    
     sbom-analysis:
+        permissions: 
+          security-events: write
         uses: ./.github/workflows/sbom-scan.yml
         secrets: inherit
         needs: dependency-scan
