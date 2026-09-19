@@ -1,0 +1,87 @@
+name: Continuous Integration
+on:
+    push:
+        branches: main
+    pull_request: 
+        
+jobs:
+    # Continuous integration (CI)
+    # Use tools to scan secret leak in code.
+    secret-scan:
+        uses: ./.github/workflows/secret-scan.yml
+        secrets: inherit    
+    
+    # Use linting tool for syntax check.    
+    linting:
+        uses: ./.github/workflows/linting.yml    
+        secrets: inherit
+        needs: secret-scan
+      
+    # Use SAST tools to scan code.    
+    sast-scan: 
+        uses: ./.github/workflows/sast-scan.yml    
+        secrets: inherit
+        needs: linting
+
+    # Dependency Checker
+    dependency-scan:
+        uses: ./.github/workflows/dependency-scan.yml    
+        secrets: inherit
+        needs: sast-scan  
+    
+    # SBOM Analysis    
+    sbom-analysis:
+        uses: ./.github/workflows/sbom-scan.yml
+        secrets: inherit
+        needs: dependency-scan
+
+    # Docker image Vulnerabilties check    
+    image-scan:
+        uses: ./.github/workflows/image-scan.yml    
+        secrets: inherit
+        needs: sbom-analysis    
+      
+    # Docker tagging and push to Container Registry.    
+    build-push:
+        if: github.event_name == 'push'
+        uses: ./.github/workflows/build-push.yml    
+        secrets: inherit
+        needs: image-scan    
+
+#<------------------------Manual Approval------------------------------>
+    # Continuous Deployment starts here
+    
+    # Infra planning. (Just a Plan, no creation)
+#     infra-plan:
+#         uses: ./.github/workflows/infra-plan.yml    
+#         secrets: inherit
+#         needs: build-push
+
+# #<------------------------Manual Approval------------------------------>
+#     # Infra will apply here.
+#     infra-deploy:
+#         uses: ./.github/workflows/infra-deploy.yml    
+#         secrets: inherit
+#         needs: infra-plan    
+
+# #<------------------------Manual Approval------------------------------>
+#     # Application Deployment starts here.
+
+#     # Install Dependencies in app servers.
+#     setup-server:
+#         uses: ./.github/workflows/setup-server.yml    
+#         secrets: inherit
+#         needs: infra-deploy 
+    
+#     # Finally, run application code on servers.    
+#     app-deploy:
+#         uses: ./.github/workflows/app-deploy.yml    
+#         secrets: inherit
+#         needs: setup-server
+     
+#     # Tool used to check application after deploy.    
+#     DAST:
+#         uses: ./.github/workflows/dast.yml    
+#         secrets: inherit
+#         needs: app-deploy     
+

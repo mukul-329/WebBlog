@@ -28,7 +28,9 @@ jobs:
                  version: v0.74.0  
 
             - name: Dockerfile Lint
-              run:     
+              uses: hadolint/hadolint-action@v3.1.0
+              with:
+               dockerfile: ${{ matrix.component }}/Dockerfile    
              
             - name: Docker Login
               run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET

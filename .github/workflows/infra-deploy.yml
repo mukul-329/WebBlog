@@ -1,0 +1,27 @@
+name: Infrastructure Deploying
+on:
+    workflow_call: 
+
+jobs:
+    plan:
+        runs-on: ubuntu-latest
+        environment: prod
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v4
+              
+            - name: Initializalising Terraform
+              run: Terraform init
+
+            - name: Validating TF files
+              run: Terraform validate  
+              
+            - name: Terraform Plan
+              run: Terraform plan
+
+            - name: Terraform Apply
+              run: Terraform apply
+                

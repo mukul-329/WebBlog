@@ -1,0 +1,15 @@
+name: Setting up servers
+on:
+    workflow_call: 
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: Connecting to Server
+              run:   
+
+            - name: Run Setup Script
+              run: bash ./scripts/setup-server.sh

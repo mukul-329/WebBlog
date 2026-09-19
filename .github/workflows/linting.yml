@@ -1,0 +1,26 @@
+name: Code Linting
+on:
+    workflow_call: 
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: Linting Workflows YML
+              uses: raven-actions/actionlint@v2  
+              with:
+                files: ".github/workflows/*.yml"
+
+            - name: Super-linter
+              uses: super-linter/super-linter@v8.7.0
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+
+            - name: Install Module 
+              run: cd frontend && yarn && ls -al
+              
+            - name: Run Linter
+              run: cd frontend && yarn lint && ls -al

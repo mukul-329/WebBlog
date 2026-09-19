@@ -1,0 +1,20 @@
+# DAST Scan
+name: DAST Scan
+on: 
+    workflow_call: 
+
+jobs:
+    dast-scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: ZAP Scan
+              uses: zaproxy/action-baseline@v0.14.0
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}
+                target: 'http://${{ secrets.EC2_HOST }}'
+                fail_action: false
+                allow_issue_writing: false
+  

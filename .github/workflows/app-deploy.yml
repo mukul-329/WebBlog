@@ -1,0 +1,15 @@
+# Goal: Deploying App on EC2, using prod environment will trigger manual approval.
+name: Deploying Application
+on: 
+    workflow_call: 
+
+jobs:
+    deploy:
+        environment: prod
+        runs-on: self-hosted
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: Docker Compose
+              run: docker compose up -d  
