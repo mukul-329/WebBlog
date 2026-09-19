@@ -1,6 +1,10 @@
 name: SBOM Analysis
 on:
     workflow_call: 
+
+permissions:
+  contents: read      
+
 jobs:
     sbom-scan:
         runs-on: ubuntu-latest

@@ -2,6 +2,9 @@ name: Dependency Checker
 on:
     workflow_call: 
 
+permissions:
+  contents: read
+
 jobs:
     Dependency_Scan:
         runs-on: ubuntu-latest

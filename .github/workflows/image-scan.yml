@@ -3,6 +3,9 @@ name: Image Scanning
 on: 
     workflow_call: 
 
+permissions:
+  contents: read
+
 env:
     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
     DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}  
