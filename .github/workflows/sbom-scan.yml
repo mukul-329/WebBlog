@@ -1,6 +1,6 @@
 name: SBOM Analysis
 on:
-    workflow_dispatch: 
+    workflow_call: 
 jobs:
     sbom-scan:
         runs-on: ubuntu-latest
