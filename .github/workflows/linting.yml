@@ -2,6 +2,9 @@ name: Code Linting
 on:
     workflow_call: 
 
+permissions:
+  contents: read
+  
 jobs:
     lint:
         runs-on: ubuntu-latest
