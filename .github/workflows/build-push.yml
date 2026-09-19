@@ -21,13 +21,13 @@ jobs:
               uses: docker/setup-docker-action@v5
 
             - name: Docker Login
-              run: docker login -u $DOCKER_USERNAME -p $DOCKER_SECRET
+              run: docker login -u "$DOCKER_USERNAME" -p "$DOCKER_SECRET"
             
             - name: Docker Build
-              run: cd ${{ matrix.component }} && docker build -t blog-${{ matrix.component }} .
+              run: cd "${{ matrix.component }}" && docker build -t blog-"${{ matrix.component }}" .
 
             - name: Image Tagging  
-              run: docker tag blog-${{ matrix.component }} $DOCKER_USERNAME/blog-${{ matrix.component }}:git-${{ github.sha }}
+              run: docker tag blog-"${{ matrix.component }}" "$DOCKER_USERNAME"/blog-"${{ matrix.component }}":git-"$GITHB_SHA"
 
             - name: Docker push
-              run: docker push $DOCKER_USERNAME/blog-${{ matrix.component }}:git-${{ github.sha }}
+              run: docker push "$DOCKER_USERNAME"/blog-"${{ matrix.component }}":git-"$GITHB_SHA"
