@@ -6,6 +6,9 @@ env:
     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
     DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }} 
 
+permissions: 
+  contents: read    
+
 jobs:
     build:
         runs-on: ubuntu-latest
