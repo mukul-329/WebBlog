@@ -16,6 +16,7 @@ jobs:
               uses: actions/dependency-review-action@v5 
               with:
                 base-ref: ${{ github.event.before }}
+  
                 head-ref: ${{ github.event.after }}
 
             - name: OWASP Depcheck
@@ -32,8 +33,9 @@ jobs:
 
             - name: Upload Test results
               if: always()
-              uses: actions/upload-artifact@master
+              uses: actions/upload-artifact@v7
               with:
                name: Depcheck report
-               path: ${{github.workspace}}/reports    
+               path: ${{github.workspace}}/reports   
+               archive: false 
 
