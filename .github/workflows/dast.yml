@@ -3,6 +3,9 @@ name: DAST Scan
 on: 
     workflow_call: 
 
+permissions:
+  contents: read 
+
 jobs:
     dast-scan:
         runs-on: ubuntu-latest

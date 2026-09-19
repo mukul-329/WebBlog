@@ -15,7 +15,8 @@ jobs:
            with:
              directory: .
              output_format: cli 
-             soft_fail: false 
+             soft_fail: false
+            
 
          - name: Setup Node
            uses: actions/setup-node@v6

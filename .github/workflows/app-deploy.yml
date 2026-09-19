@@ -3,6 +3,9 @@ name: Deploying Application
 on: 
     workflow_call: 
 
+permissions:
+  contents: read 
+  
 jobs:
     deploy:
         environment: prod
