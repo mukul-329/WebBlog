@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1 
+metadata:
+  name: db-svc
+  namespace: blog
+spec:
+  type: ClusterIP
+  selector:
+    app: blog-database
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017

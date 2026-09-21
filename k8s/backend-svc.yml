@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1 
+metadata:
+  name: blog-bck 
+  namespace: blog
+spec:
+  type: ClusterIP
+  selector:
+    app: blog-backend 
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

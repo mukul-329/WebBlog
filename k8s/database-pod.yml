@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: blog-pod-database
+  namespace: blog
+  labels:
+    app: blog-database
+spec:
+  containers:
+  - name: mongo
+    image: mongo
+    env:
+    - name: MONGO_INITDB_ROOT_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: blog-secret
+          key: MONGO_INITDB_ROOT_USERNAME
+
+    - name: MONGO_INITDB_ROOT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: blog-secret
+          key: MONGO_INITDB_ROOT_PASSWORD
+    ports:
+    - containerPort: 27017  
+    
+  

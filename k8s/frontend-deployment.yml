@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1 
+metadata:
+  name: frontend
+  namespace: blog
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog-frontend
+  template:
+    metadata:
+      name: blog-pod-frontend
+      labels:
+        app: blog-frontend
+    spec:
+     containers:
+       - name: frontend
+         image: mukul329/blog-frontend
+         ports:
+          - containerPort: 80      
+    

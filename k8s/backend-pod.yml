@@ -1,0 +1,35 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: blog-pod-backend
+  namespace: blog
+  labels:
+    app: blog-backend
+spec:
+  containers:
+  - name: backend
+    image: mukul329/blog-backend
+    ports:
+    - containerPort: 5000   
+    env:
+    - name: MONGO_INITDB_ROOT_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: blog-secret
+          key: MONGO_INITDB_ROOT_USERNAME
+    - name: MONGO_INITDB_ROOT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: blog-secret
+          key: MONGO_INITDB_ROOT_PASSWORD  
+    - name: JWT_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: blog-secret
+          key: JWT_SECRET_KEY     
+    - name: CONNECTION_URL
+      value: mongodb://$(MONGO_INITDB_ROOT_USERNAME):$(MONGO_INITDB_ROOT_PASSWORD)@db-svc:27017/db-svc?authSource=admin 
+    - name: CLIENT_ORIGIN
+      value: http://blog-svc:3000  
+    
+  
