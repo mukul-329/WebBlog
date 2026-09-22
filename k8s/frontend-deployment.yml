@@ -18,5 +18,5 @@ spec:
        - name: frontend
          image: mukul329/blog-frontend
          ports:
-          - containerPort: 80      
+          - containerPort: 80     
     

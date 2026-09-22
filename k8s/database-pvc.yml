@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-pvc
+  namespace: blog
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: eks-local-storage
+  resources:
+    requests:
+      storage: 10Gi

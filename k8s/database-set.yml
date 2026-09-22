@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: blog-pod-database
+  namespace: blog
+spec:
+  serviceName: db-svc
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog-database
+
+  template:
+    metadata:
+      labels:
+        app: blog-database
+
+    spec:
+     containers:
+      - name: mongo
+        image: mongo
+        env:
+         - name: MONGO_INITDB_ROOT_USERNAME
+           valueFrom:
+            secretKeyRef:
+              name: blog-secret
+              key: MONGO_INITDB_ROOT_USERNAME
+
+         - name: MONGO_INITDB_ROOT_PASSWORD
+           valueFrom:
+            secretKeyRef:
+              name: blog-secret
+              key: MONGO_INITDB_ROOT_PASSWORD
+        ports:
+         - containerPort: 27017
+
+     volumes:
+      - name: blog-data
+        persistentVolumeClaim:
+          claimName: db-pvc     
+  

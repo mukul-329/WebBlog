@@ -1,3 +1,5 @@
+#Cluster IP- but still can use port forward command 
+#if using kind cluster
 kind: Service
 apiVersion: v1 
 metadata:
@@ -9,6 +11,6 @@ spec:
     app: blog-frontend
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 80
-      nodePort: 30002
+      port: 3000    #Internal port services needed for communication
+      targetPort: 80   #container port exposed in dockerfile
+      nodePort: 31575  #Port exposed 
