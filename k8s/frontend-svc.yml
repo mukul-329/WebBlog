@@ -6,11 +6,11 @@ metadata:
   name: blog-svc 
   namespace: blog
 spec:
-  type: NodePort
+  # type: NodePort
   selector:
     app: blog-frontend
   ports:
     - protocol: TCP
       port: 3000    #Internal port services needed for communication
       targetPort: 80   #container port exposed in dockerfile
-      nodePort: 31575  #Port exposed 
+      # nodePort: 31575  #Port exposed 
