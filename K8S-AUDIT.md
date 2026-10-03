@@ -4,12 +4,14 @@ Fill this in after you run `./audit.sh`. The script is only a hint. Your evidenc
 
 ## My app
 
-- Name:
-- Repo link:
-- Tiers (frontend / API / database or cache, and what each one is built with):
-- Kubernetes manifests are in (folder):
+- Name: WebBlog
+- Repo link: https://github.com/mukul-329/WebBlog
+- Tiers (frontend / API / database or cache, and what each one is built with): frontend(),Backend(),Database(MongoDB)
+- Kubernetes manifests are in (folder): k8s
 - How to run it from a fresh machine (every command, in order, starting from `kind create cluster`):
+  
 - How to open it (URL, or port-forward command):
+  
 
 ## Before you submit
 
