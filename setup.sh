@@ -1,6 +1,7 @@
+#!/bin/bash
 sudo apt update
 sudo apt install docker.io
-newgrp docker
+sudo newgrp docker
 sudo usermod -aG docker $USER
 docker run hello-world
 docker login

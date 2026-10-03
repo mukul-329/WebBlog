@@ -49,7 +49,8 @@ Only the frontend publishes `3000:80`. Nginx forwards browser requests from `/ap
 
 Here’s a preview of the project structure:
 
-![Screenshot 2024-09-01 152859](https://github.com/user-attachments/assets/1d8f5db1-d055-4993-8033-117160d8d58c)
+![](./assets/blog.png)
+![](./assets/login-page.png)
 
 ## 🔧 Technologies Used
 
