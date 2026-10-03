@@ -10,6 +10,7 @@ Fill this in after you run `./audit.sh`. The script is only a hint. Your evidenc
 - Kubernetes manifests are in (folder): k8s
 - How to run it from a fresh machine (every command, in order, starting from `kind create cluster`):-
   ```
+  git clone https://github.com/mukul-329/WebBlog.git && cd WebBlog/
   kind create cluster --config kind/kind-config.yaml
   docker build -t blog-frontend:v1 frontend/
   docker build -t blog-backend:v1 backend/
