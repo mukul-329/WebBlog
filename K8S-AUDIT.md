@@ -6,13 +6,22 @@ Fill this in after you run `./audit.sh`. The script is only a hint. Your evidenc
 
 - Name: WebBlog
 - Repo link: https://github.com/mukul-329/WebBlog
-- Tiers (frontend / API / database or cache, and what each one is built with): frontend(),Backend(),Database(MongoDB)
+- Tiers (frontend / API / database or cache, and what each one is built with): frontend(React,CSS),Backend(Node.js,Express.js),Database(MongoDB)
 - Kubernetes manifests are in (folder): k8s
-- How to run it from a fresh machine (every command, in order, starting from `kind create cluster`):
-  
+- How to run it from a fresh machine (every command, in order, starting from `kind create cluster`):-
+  ```
+  kind create cluster --config kind/kind-config.yaml
+  docker build -t blog-frontend:v1 frontend/
+  docker build -t blog-backend:v1 backend/
+  docker tag blog-frontend:v1 blog-backend:v1
+  kind load docker-image blog-frontend:v1 blog-backend:v1 --name audit
+  kubectl apply -f k8s/
+  ```
 - How to open it (URL, or port-forward command):
+  ```
+  http://localhost:3000/
+  ```
   
-
 ## Before you submit
 
 - [ ] "My app" is filled in and the run steps work on a fresh cluster
