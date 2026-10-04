@@ -15,7 +15,8 @@ Fill this in after you run `./audit.sh`. The script is only a hint. Your evidenc
   docker build -t blog-frontend:v1 frontend/
   docker build -t blog-backend:v1 backend/
   docker tag blog-frontend:v1 blog-backend:v1
-  kind load docker-image blog-frontend:v1 blog-backend:v1 --name audit
+  kind load docker-image blog-frontend:v1 blog-backend:v1 --name audit (If not pulling image from Docker hub)
+  docker push blog-frontend:v1 blog-backend:v1 (If pulling image from Docker hub)
   kubectl apply -f k8s/namespace.yml -f k8s/secrets.yml
   kubectl apply -f k8s/frontend/ -f k8s/backend/ -f k8s/database/
   ```
